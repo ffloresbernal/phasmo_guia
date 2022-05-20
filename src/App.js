@@ -1,19 +1,27 @@
+import React from 'react';
 import './App.scss';
-import {DatePicker} from 'antd';
-
+import {BrowserRouter , Route, Routes  } from 'react-router-dom';
+import routes from "./config/routes";
 
 function App() {
-
-  const test = (date,dateString) =>{
-  console.log(date, dateString);  
-  }
-
   return (
-    <div className="app">
-      <h1> Phasmophobia </h1>
-      <DatePicker onChange={test} />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        {routes.map((route, index) =>(
+          <Route 
+            key={index} 
+            path={route.path} 
+            element={
+            <route.layout>
+              <route.component />
+            </route.layout> 
+            } 
+          />
+        ))}
+      </Routes>
+    </BrowserRouter>
   );
 }
+
 
 export default App;

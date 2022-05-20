@@ -3,6 +3,9 @@
 .app{
     h1{
         color: $primary-color;
+        a{
+            outline:none;
+        }
     }
     
 }
