@@ -1,22 +1,23 @@
-import React, { Children } from 'react';
+import React, {useState} from 'react';
 import {Layout} from 'antd';
 import Contact from '../pages/contacto';
 import MenuTop from '../components/Admin/MenuTop';
+import MenuSider from '../components/Admin/MenuSider/menusider';
 
 import "./LayoutAdmin.scss";
 
 
 export default function LayoutAdmin(props){
     const {children} = props;
+    const[menuCollapsed , setMenuCollapsed]= useState(false);
     const {Header, Content, Footer} = Layout;
 
     return(
         <Layout>
-            {/* TO DO: MENU SIDER */}
-
-            <Layout className='layout-admin' >
+            <MenuSider menuCollapsed={menuCollapsed} />
+            <Layout className='layout-admin' style={{marginLeft: menuCollapsed ? "80px" : "200px"}} >
                 <Header className='layout-admin__header'>
-                    <MenuTop />
+                    <MenuTop menuCollapsed={menuCollapsed} setMenuCollapsed={setMenuCollapsed} />
                 </Header>
                 <Content className='layaut-admin__content'>
                     {children}

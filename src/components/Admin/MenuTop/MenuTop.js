@@ -5,7 +5,8 @@ import { MenuFoldOutlined,PoweroffOutlined } from '@ant-design/icons';
 
 import './MenuTop.scss';
 
-export default function MenuTop(){
+export default function MenuTop(props){
+    const {menuCollapsed ,setMenuCollapsed} = props;
     return (
         <div className="menu-top">
             <div className="menu-top__left">
@@ -14,7 +15,7 @@ export default function MenuTop(){
                 src={artista}
                 alt="artista"
                  />
-                <Button type="link" onClick={()=>console.log('click')}>
+                <Button type="link" onClick={ () => setMenuCollapsed(!menuCollapsed)}  >
                     <MenuFoldOutlined />
                 </Button>
             </div>
@@ -24,5 +25,6 @@ export default function MenuTop(){
                 </Button>
             </div>
         </div>
+
     );
 }
